@@ -1,0 +1,34 @@
+<p id="notice"><%= notice %></p>
+
+<% @post = post%>
+
+<!-- this is for showing user_name and profile pic of user with post  -->
+  <div align = "left" class="pad">
+    <% if @post.user.image.representable? %>
+      <%= image_tag @post.user.image.representation(resize_to_limit: [500, 500]), :class=> "img-circular1" %>
+    <% end %>
+    <p class="margin-like"><%= @post.user.user_name %></p>
+  </div>
+
+<!-- this is for showing each image of single post  -->
+  <% @post.images.each do |file| %>
+      <div class="card pad" style="width: 33rem;">
+        <% if file.representable? %>
+          <%= image_tag file.representation(resize_to_limit: [500, 500]), class: "card-img-top " %>
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title"></h5>
+          <p class="card-text"></p>
+        </div>
+      </div>
+  <% end %>
+
+<div align = "left" class="margin-like like-gap">
+  <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
+  <% if pre_like %>
+    <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete, class:"btn btn-danger" %>
+  <% else %>
+    <%= button_to 'Like', post_likes_path(@post), method: :post, :class=> "btn btn-success" %>
+  <% end %>
+  <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+</div>

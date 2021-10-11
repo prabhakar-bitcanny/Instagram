@@ -1,0 +1,177 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, or any plugin's
+ * vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+ *= require_tree .
+ *= require bootstrap.min
+ *= require_self
+ */
+
+.navbar {
+  background-color: #fff;
+  border-bottom: 1px solid rgba(0,0,0,.0975);
+  height: 77px;
+}
+ .img-circular{
+  width: 200px;
+  height: 200px;
+  background-size: cover;
+  display: block;
+  border-radius: 70px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-style: solid;
+  border-width: 3px;
+  border-color: violet;
+ }
+
+ .block{
+   align: left;
+   margin-top: 5px;
+   margin-bottom: 10px;
+ }
+
+ .img-circular1{
+  width: 80px;
+  height: 80px;
+  background-size: cover;
+  display: block;
+  border-radius: 70px;
+  -webkit-border-radius: 100px;
+  -moz-border-radius: 100px;
+  border-style: solid;
+  border-width: 3px;
+  border-color: violet;
+ }
+
+.margin-like{
+  margin-left: 20px;
+}
+
+.gap-post{
+  margin-top: 20px;
+}
+
+.edit-gap{
+  margin-bottom: 20px;
+  position: relative;
+  left: 300px;
+
+}
+
+.insta{
+  /* font: inherit; */
+  /* font-family: "billabong", sans-serif; */
+}
+
+.user_name-size{
+  font-size: 25px;
+}
+
+.text-size{
+  font-size: 15px;
+}
+
+.gapping{
+  margin-bottom: 5px;
+}
+
+.comment-size{
+  font-size: 17px;
+}
+
+.commenter-size{
+  font-size: 14px;
+}
+
+.caption-size{
+  font-size: 17px;
+}
+
+.content-size{
+  font-size: 15px;
+}
+
+.like-gap{
+  margin-top: 5px;
+}
+
+.profile-post-gap{
+  margin-bottom: 10px;
+}
+
+.second{
+	float: left;
+	margin-right: 10px;
+}
+.first{
+	width: 100%;
+}
+
+.user_name-top{
+  margin-top: 40px;
+}
+
+.gapping{
+  height: 50px;
+}
+
+.gapping1{
+  height: 210px;
+}
+
+.main{
+  position: relative;;
+  left: 120px;
+	width: 100%;
+}
+
+.subsection{
+  float: left;
+	margin-right: 2px;
+}
+
+.suggestion-heading{
+  position: relative;
+  left: 57px;
+  margin-top: 23px;
+}
+
+.suggestion-content{
+  margin-left: 30px;
+  margin-top: 20px;
+}
+
+.pad{
+  position: relative;
+  left: 7px;
+}
+
+.comment-main{
+  width: 100%;
+}
+
+.comment-section{
+  float: left;
+	margin-right: 2px;
+}
+
+.subsection1{
+  margin-top: 60px;
+  float: left;
+	margin-right: 130px;
+  position: relative;
+  left: 50px;
+}
+
+.chat-name{
+  font-size: 20px;
+}

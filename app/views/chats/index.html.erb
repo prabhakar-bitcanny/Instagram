@@ -1,0 +1,27 @@
+<div class="main">
+  <div align = "left" class="subsection1">
+    <h3>All Users:</h3>
+      <div align = "left">
+        <% @users.each do |user| %>
+          <% if user.id != current_user.id %>
+            <p class="chat-name"><%= link_to user.name, chats_path(sender_id: current_user.id, recipient_id: user.id), method: "post"%></p>
+          <% end %>
+        <% end %>
+     </div>
+  </div>
+  <div class="subsection1">
+    <h3>All Conversations:</h3>
+    <div align = "left">
+      <% @chats.each do |chat| %>
+       <% if chat.sender_id == current_user.id || chat.recipient_id == current_user.id %>
+        <% if chat.sender_id == current_user.id %>
+         <% recipient = User.find(chat.recipient_id) %>
+        <% else %>
+         <% recipient = User.find(chat.sender_id) %>
+        <% end %>
+        <p class="chat-name"><%= link_to recipient.name, chat_msgs_path(chat)%></p>
+       <% end %>
+      <% end %>
+    </div>
+  </div>
+</div>

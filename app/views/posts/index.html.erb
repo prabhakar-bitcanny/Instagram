@@ -1,0 +1,36 @@
+<p id="notice"><%= notice %></p>
+
+<div class="main">
+
+  <div class="subsection">
+    <!-- <h1>Posts</h1> -->
+      <% @posts.each do |post| %>
+        <div class="gap-post">
+          <div class="card" style="width: 34rem;" class="rounded mx-auto d-block" >
+            <%= render "show", post: post %>
+            <div class="card-body" align = "left">
+              <p class="card-text" class="margin"><strong class="caption-size"><%= post.caption %></strong></p>
+              <h5 class="card-title" class="margin-comment ">Comments</h5>
+              <p class="card-text" class="margin-comment"><%= render @post.postcomments %></p>
+              <h5 class="card-title comment-size"></h5>
+              <%= render 'postcomments/form' %>
+            </div>
+          </div>
+        </div>
+      <% end %>
+  </div>
+
+  <div class="subsection">
+    <!-- <div class="suggestion-content" align = "left"> -->
+      <div class="card suggestion-heading" style="width: 15rem;">
+        <h5 class="">Sugessions for you</h5>
+        <div align = "left" class="suggestion-content">
+          <% @suggestions.each do |suggestion| %>
+            <p><%= suggestion.name %>   <%= link_to 'Show', suggestion %></p>
+          <% end %>
+        </div>
+      </div>
+    <!-- </div> -->
+  </div>
+
+</div>

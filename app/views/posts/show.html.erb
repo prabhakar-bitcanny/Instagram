@@ -1,0 +1,31 @@
+<p id="notice"><%= notice %></p>
+
+  <% @post.images.each do |file| %>
+
+      <div class="card" style="width: 45rem;">
+        <p>
+            <strong>User:</strong>
+            <%= @post.user.user_name %>
+        </p>
+        <% if file.representable? %>
+          <%= image_tag file.representation(resize_to_limit: [500, 500]), class: "card-img-top" %>
+        <% end %>
+        <div class="card-body">
+          <h5 class="card-title"></h5>
+          <p class="card-text"><%= @post.caption %></p>
+          <!-- button to like -->
+          <% pre_like = @post.likes.find { |like| like.user_id == current_user.id} %>
+          <% if pre_like %>
+            <%= button_to 'Unlike', post_like_path(@post, pre_like), method: :delete %>
+          <% else %>
+            <%= button_to 'Like', post_likes_path(@post), method: :post %>
+          <% end %>
+          <p><%= @post.likes.count %> <%= (@post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+          <h4>Comments</h4>
+          <%= render @post.postcomments %>
+
+          <h4>Add a comment:</h4>
+          <%= render 'postcomments/form' %>
+        </div>
+      </div>
+  <% end %>

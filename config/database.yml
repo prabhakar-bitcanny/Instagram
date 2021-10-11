@@ -1,0 +1,28 @@
+
+default: &default
+  adapter: postgresql
+  encoding: unicode
+  # pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
+  host: localhost
+  port: 5432
+  pool: 5
+  timeout: 5000
+
+
+development:
+  <<: *default
+  database: Instag_development
+  username: user1
+  password: user1
+
+test:
+  <<: *default
+  database: Instag_test
+  username: user1
+  password: user1
+
+# production:
+#   <<: *default
+#   database: Instag_production
+#   username: Instag
+#   password: <%= ENV['INSTAG_DATABASE_PASSWORD'] %>

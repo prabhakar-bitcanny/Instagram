@@ -1,0 +1,52 @@
+  <p id="notice"><%= notice %></p>
+
+  <div class="card" style="width: 18rem;">
+    <% if @current_user.image.representable? %>
+      <%= image_tag @current_user.image.representation(resize_to_limit: [200, 200]) %>
+    <% end %>
+    <div class="card-body">
+      <h5 class="card-title"><p>
+        <strong>User: </strong>
+        <%= @current_user.name %>
+      </p></h5>
+      <h5 class="card-title"><p>
+        <strong>Username: </strong>
+        <%= @current_user.user_name %>
+      </p></h5>
+      <h5 class="card-title"><p>
+        <strong>Bio: </strong>
+        <%= @current_user.bio %>
+      </p></h5>
+      <p class="card-text"><strong>Followers: </strong>
+      <%= @current_user.followers.count %></p>
+      <p class="card-text"><strong>Following: </strong>
+      <%= @current_user.following.count %></p>
+      <%= link_to "Edit profile", edit_user_registration_path %>
+    </div>
+  </div>
+
+<ul>
+  <% current_user.posts.each do |post| %>
+    <li>
+      <% post.images.each do |file| %>
+        <% if file.representable? %>
+          <%= image_tag file.representation(resize_to_limit: [400, 400]) %>
+        <% end %>
+      <% end %>
+    </li>
+    <p>
+      <strong>Like: </strong>
+      <%= post.likes.count %>
+    </p>
+    <p>
+      
+      <%= post.caption %>
+    </p>
+    <h5>Comments</h5>
+    <%= render post.postcomments %>
+
+    <%= link_to 'Edit', edit_post_path(post) %>
+    <%= link_to 'Destroy', post, method: :delete, data: { confirm: 'Are you sure?' } %>
+  <% end %>
+
+</ul>

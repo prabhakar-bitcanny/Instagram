@@ -1,0 +1,105 @@
+<p id="notice"><%= notice %></p>
+<% if @user.present? %>
+
+  <div align = "left">
+    <div class="first">
+      <div class="second">
+        <% if @user.image.representable? %>
+          <%= image_tag @user.image.representation(resize_to_limit: [300, 300]), :class=> "img-circular" %>
+        <% end %>
+      </div>
+      <div class="second">
+        <% if @user == current_user %>
+          <%= link_to "Edit profile", edit_user_registration_path, :class=>"btn btn-outline-dark" %>
+        <% end %>
+      </div>
+    </div>
+
+    <% if @user != current_user %>
+      <%= render 'follow_form'  %>
+      <%= render 'block_form'  %>
+      <%# link_to 'Back', users_path %>
+    <% end %>
+
+    <% if @user == current_user %>
+      <div class="gapping">    </div>
+    <% end %>
+
+    <p class= "user_name-size">
+      <strong><%= @user.user_name %></strong>
+    </p>
+
+    <p class="text-size">
+      <strong><%= @user.name %></strong>
+    </p>
+
+    <p class="text-size">
+      <!-- <strong>Bio: </strong> -->
+      <%= @user.bio %>
+    </p>
+
+    <div class="first">
+      <div class="second">
+        <p class="text-size">
+          <strong><%= @user.posts.count %></strong> <%= (@user.posts.count) == 1 ? 'Post' : 'Posts'%>
+        </p>
+      </div>
+      <div class="second">
+        <p class="text-size">
+          <strong><%= @user.followers.count %></strong> <%= (@user.followers.count) == 1 ? 'Follower' : 'Followers'%>
+        </p>
+      </div>
+      <div class="second">
+        <p class="text-size">
+          <strong><%= @user.following.count %></strong> <%= (@user.following.count) == 1 ? 'Following' : 'Followings'%>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <div class="gapping">  </div>
+  <div class="gapping">  </div>
+
+  <div align = "left">
+    <ul>
+      <% @user.posts.each do |post| %>
+        <div class="profile-post-gap">
+          <li>
+            <% post.images.each do |file| %>
+              <% if file.representable? %>
+                <%= image_tag file.representation(resize_to_limit: [400, 400]) %>
+              <% end %>
+            <% end %>
+          </li>
+
+          <div class="like-gap">
+            <% pre_like = post.likes.find { |like| like.user_id == current_user.id} %>
+            <% if pre_like %>
+              <%= button_to 'Unlike', post_like_path(post, pre_like), method: :delete, class:"btn btn-danger" %>
+            <% else %>
+              <%= button_to 'Like', post_likes_path(post), method: :post, :class=> "btn btn-success" %>
+            <% end %>
+            <p><%= post.likes.count %> <%= (post.likes.count) == 1 ? 'Like' : 'Likes'%></p>
+          </div>
+
+          <p>
+            <strong><%= post.caption %></strong>
+          </p>
+
+          <div class="">
+            <% if @user == current_user %>
+            <%= link_to "Edit", edit_post_path(post), :class=>"btn btn-outline-primary" %>
+            <%= link_to "Delete", post_path(post), method: :delete, data: { confirm: "Are you sure?" }, :class=>"btn btn-outline-danger" %>
+            <% end %>
+          </div>
+
+          <h7>Comments</h7>
+          <%= render post.postcomments %>
+
+        </div>
+      <% end %>
+    </ul>
+  </div>
+  <% else %>
+    <h4>User dosen't exit </h4>
+  <% end %>

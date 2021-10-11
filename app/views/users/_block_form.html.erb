@@ -1,0 +1,7 @@
+<div class="block">
+  <% if current_user.blocking?(@user) %>
+    <%= render 'unblock' %>
+  <% else %>
+    <%= render 'block' %>
+  <% end %>
+</div>
