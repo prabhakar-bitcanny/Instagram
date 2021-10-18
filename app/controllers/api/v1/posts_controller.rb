@@ -3,6 +3,7 @@ class Api::V1::PostsController < Api::V1::ApplicationController
   # skip_before_action :verify_authenticity_token
   before_action :doorkeeper_authorize!
 
+
   def index
     @posts = Post.all
     render json: @posts
@@ -33,11 +34,15 @@ class Api::V1::PostsController < Api::V1::ApplicationController
     @post.destroy
   end
 
-
   private
     # Use callbacks to share common setup or constraints between actions.
+    # def set_post
+    #   @post = Post.find(params[:id])
+    # end
     def set_post
       @post = Post.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      render json: { error: e.to_s }, status: :not_found
     end
 
     # Only allow a list of trusted parameters through.

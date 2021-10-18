@@ -11,14 +11,14 @@
   <% end %>
 
   <div class="field" align = "left">
-    <p><%= form.label :caption %></p>
+    <p><strong class="add"><%= form.label :caption %></strong></p>
     <p><%= form.text_area :caption %></p>
 
-    <%= form.label :Image %>
+    <p><strong class="add"><%= form.label :Image %></strong></p>
     <%= form.file_field :images, multiple: true %><br>
   </div>
 
   <div class="actions" align = "left">
-    <%= form.submit %>
+    <%= form.submit "Create"%>
   </div>
 <% end %>

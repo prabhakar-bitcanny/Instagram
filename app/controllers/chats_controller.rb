@@ -2,9 +2,15 @@ class ChatsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-    @users = User.all
+    following = current_user.following.pluck(:id)
+    blocked_by = current_user.blocked_by.pluck(:id)
+    unblocked_following = following - blocked_by
+    @users = User.where(id: unblocked_following)
+
     @chats = Chat.all
   end
+
+
 
   def create
     if Chat.between(params[:sender_id], params[:recipient_id]).present?

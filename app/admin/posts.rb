@@ -1,5 +1,5 @@
 ActiveAdmin.register Post do
-
+  permit_params :user_id, :caption
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -19,6 +19,7 @@ ActiveAdmin.register Post do
   # filter :current_sign_in_at
   # filter :sign_in_count
   filter :created_at
+  filter :user
 
   show do
     attributes_table do

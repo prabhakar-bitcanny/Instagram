@@ -2,6 +2,7 @@ class Api::V1::UsersController < Api::V1::ApplicationController
 
   before_action :set_user, only: %i[ show edit update destroy ]
   # skip_before_action :verify_authenticity_token
+  # before_action :find_user, only: :show
 
   def index
     @users = User.all
@@ -35,8 +36,13 @@ class Api::V1::UsersController < Api::V1::ApplicationController
   end
 
   private
+    # def set_user
+    #   @user = User.find(params[:id])
+    # end
     def set_user
       @user = User.find(params[:id])
+    rescue ActiveRecord::RecordNotFound => e
+      render json: { error: e.to_s }, status: :not_found
     end
 
     def user_params

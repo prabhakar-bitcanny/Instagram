@@ -1,5 +1,6 @@
 ActiveAdmin.register User do
 
+  permit_params :name, :user_name, :email, :phone_no, :password, :password_confirmation
   # See permitted parameters documentation:
   # https://github.com/activeadmin/activeadmin/blob/master/docs/2-resource-customization.md#setting-up-strong-parameters
   #
@@ -46,6 +47,7 @@ ActiveAdmin.register User do
   form do |f|
     f.inputs do
       f.input :name
+      f.input :user_name
       f.input :phone_no
       f.input :email
       f.input :password

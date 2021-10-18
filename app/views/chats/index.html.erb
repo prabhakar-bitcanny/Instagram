@@ -1,10 +1,10 @@
 <div class="main">
   <div align = "left" class="subsection1">
-    <h3>All Users:</h3>
+    <h3>Friends:</h3>
       <div align = "left">
         <% @users.each do |user| %>
           <% if user.id != current_user.id %>
-            <p class="chat-name"><%= link_to user.name, chats_path(sender_id: current_user.id, recipient_id: user.id), method: "post"%></p>
+            <p class="chat-name"><%= link_to user.name, chats_path(sender_id: current_user.id, recipient_id: user.id), method: "post", class: "hober" %></p>
           <% end %>
         <% end %>
      </div>
@@ -19,7 +19,7 @@
         <% else %>
          <% recipient = User.find(chat.sender_id) %>
         <% end %>
-        <p class="chat-name"><%= link_to recipient.name, chat_msgs_path(chat)%></p>
+        <p class="chat-name"><%= link_to recipient.name, chat_msgs_path(chat), :class=> "hober" %></p>
        <% end %>
       <% end %>
     </div>

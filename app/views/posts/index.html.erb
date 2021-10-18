@@ -22,11 +22,22 @@
 
   <div class="subsection">
     <!-- <div class="suggestion-content" align = "left"> -->
-      <div class="card suggestion-heading" style="width: 15rem;">
+      <div class="card suggestion-heading" style="width: 17rem;">
         <h5 class="">Sugessions for you</h5>
         <div align = "left" class="suggestion-content">
           <% @suggestions.each do |suggestion| %>
-            <p><%= suggestion.name %>   <%= link_to 'Show', suggestion %></p>
+            <div class="subsection2">
+              <% if suggestion.image.representable? %>
+                 <%= image_tag suggestion.image.representation(resize_to_limit: [500, 500]), :class=> "img-circular2" %>
+              <% end %>
+            </div>
+            <div class="subsection2">
+              <div class="suggestion-pos">
+                <%= link_to suggestion.name, suggestion, class: "hober" %>
+              </div>
+            </div>
+            <div class="gapping">
+            </div>
           <% end %>
         </div>
       </div>

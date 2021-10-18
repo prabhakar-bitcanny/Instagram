@@ -20,6 +20,11 @@
   border-bottom: 1px solid rgba(0,0,0,.0975);
   height: 77px;
 }
+
+.nav-link:hover {
+   background-color: #fff;
+ }
+
  .img-circular{
   width: 200px;
   height: 200px;
@@ -29,8 +34,9 @@
   -webkit-border-radius: 100px;
   -moz-border-radius: 100px;
   border-style: solid;
-  border-width: 3px;
-  border-color: violet;
+  border-width: 2.5px;
+  /* border-color: violet; */
+  border-color: rgb(153, 14, 153);
  }
 
  .block{
@@ -48,8 +54,8 @@
   -webkit-border-radius: 100px;
   -moz-border-radius: 100px;
   border-style: solid;
-  border-width: 3px;
-  border-color: violet;
+  border-width: 2px;
+  border-color: rgb(153, 14, 153);
  }
 
 .margin-like{
@@ -129,8 +135,8 @@
 }
 
 .main{
-  position: relative;;
-  left: 120px;
+  position: relative;
+  left: 84px;
 	width: 100%;
 }
 
@@ -165,7 +171,7 @@
 }
 
 .subsection1{
-  margin-top: 60px;
+  margin-top: 4px;
   float: left;
 	margin-right: 130px;
   position: relative;
@@ -173,5 +179,35 @@
 }
 
 .chat-name{
+  font-size: 20px;
+}
+
+.img-circular2{
+ width: 50px;
+ height: 50px;
+ background-size: cover;
+ display: block;
+ border-radius: 70px;
+ -webkit-border-radius: 100px;
+ -moz-border-radius: 100px;
+ border-style: solid;
+ border-width: 2px;
+ border-color: rgb(153, 14, 153);
+}
+
+.subsection2{
+  float: left;
+	margin-right: 2px;
+}
+
+.suggestion-pos{
+  margin-top: 12px;
+}
+
+.hober:hover {
+   background-color: #fff;
+ }
+
+.add{
   font-size: 20px;
 }
