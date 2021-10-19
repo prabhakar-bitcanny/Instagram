@@ -55,7 +55,7 @@ class UsersController < ApplicationController
     if @user.nil?
       @user = User.find_by_id(params[:user_name])
     end
-    
+
   end
 
   def profile

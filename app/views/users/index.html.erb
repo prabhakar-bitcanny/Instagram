@@ -1,25 +1,31 @@
 <p id="notice"><%= notice %></p>
+<div class="main">
+  <div class="subsection">
+    <h1>Users on Instagram</h1>
 
-<h1>Users on Instagram</h1>
+    <table>
+      <thead>
+        <tr>
+          <th>Name</th>
+          <th>Username</th>
+          <th colspan="3"></th>
+        </tr>
+      </thead>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Username</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+      <tbody>
+        <% @users.each do |user| %>
+          <tr>
+              <td align = "left"><%= link_to user.name, user, class: "hober" %></td>
+              <td align = "left"><%= user.user_name %></td>
+              <td><%=  %></td>
+          </tr>
+        <% end %>
+      </tbody>
+    </table>
+    <br>
+  </div>
 
-  <tbody>
-    <% @users.each do |user| %>
-      <tr>
-          <td><%= user.name %></td>
-          <td><%= user.user_name %></td>
-          <td><%= link_to 'Show', user %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
+  <div class="subsection3">
+    <%= link_to "Current User Details", users_path(format: "csv"), :class=>"btn btn-outline-info btn-lg" %>
+  </div>
+</div>

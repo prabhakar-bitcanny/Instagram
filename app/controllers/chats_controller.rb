@@ -11,7 +11,6 @@ class ChatsController < ApplicationController
   end
 
 
-
   def create
     if Chat.between(params[:sender_id], params[:recipient_id]).present?
        @chat = Chat.between(params[:sender_id], params[:recipient_id]).first

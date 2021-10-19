@@ -19,6 +19,7 @@ ActiveAdmin.register User do
     selectable_column
     id_column
     column :name
+    column :user_name
     column :phone_no
     column :email
     column :bio
@@ -38,7 +39,10 @@ ActiveAdmin.register User do
   show do
     attributes_table do
       row :name
+      row :user_name
       row :email
+      row :bio
+      row :phone_no
     end
     # active_admin_comments
   end

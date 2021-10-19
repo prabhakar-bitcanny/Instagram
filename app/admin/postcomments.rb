@@ -17,5 +17,6 @@ ActiveAdmin.register Postcomment do
 
   filter :content
   filter :created_at
+  filter :user
 
 end
